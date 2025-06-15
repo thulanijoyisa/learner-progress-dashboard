@@ -10,8 +10,12 @@
 - Public route – no authentication required
 - Tested: feature + unit tests included
 
+## Clone the Project
+```bash
+git clone https://github.com/thulanijoyisa/learner-progress-dashboard.git
+cd learner-progress-dashboard
+```
 ## Getting Started
-
 1. Run `composer install`
 2. Configure your `.env` file from the example `cp .env.example .env`
 3. Generate the App Key: `php artisan key:generate`
