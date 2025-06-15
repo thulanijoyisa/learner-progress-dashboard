@@ -14,7 +14,7 @@ class LearnerProgressController extends Controller
     $sortOrder = $request->query('sort', 'desc');
     $search = $request->query('search');
 
-    $learners = Learner::with(['enrolments.course'])
+    $query = Learner::with(['enrolments.course'])
         ->when($courseFilter, function ($query) use ($courseFilter) {
             $query->whereHas('courses', function ($q) use ($courseFilter) {
                 $q->where('name', $courseFilter);
@@ -25,12 +25,9 @@ class LearnerProgressController extends Controller
                 $q->where('firstname', 'like', "%{$search}%")
                   ->orWhere('lastname', 'like', "%{$search}%");
             });
-        })
-        ->get()
-        ->sortBy(function ($learner) {
-            return $learner->enrolments->avg('progress');
-        }, SORT_REGULAR, $sortOrder === 'desc');
-
+        });
+       
+    $learners = $query->paginate(10)->appends(request()->query());
     $courses = Course::orderBy('name')->pluck('name');
 
     return view('learner-progress.index', compact('learners', 'courses', 'courseFilter', 'sortOrder', 'search'));
