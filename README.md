@@ -29,4 +29,4 @@ cd learner-progress-dashboard
 6. Running tests for features + model logic :  `php artisan test`
 
 ## Live Demo Link
-🔗 [Click here to view the live demo](https://learner-progres.up.railway.app/learner-progress)
+🔗 [Click here to view the live demo](https://learner-progress.up.railway.app/learner-progress)
