@@ -13,6 +13,9 @@
 ## Clone the Project
 ```bash
 git clone https://github.com/thulanijoyisa/learner-progress-dashboard.git
+```
+Access directory:
+```bash
 cd learner-progress-dashboard
 ```
 ## Getting Started
