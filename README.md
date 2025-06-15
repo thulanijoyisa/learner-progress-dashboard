@@ -27,4 +27,6 @@ cd learner-progress-dashboard
 4. Run migrations and seeders: `php artisan migrate --seed`
 5. Start the development server: `php artisan serve`
 6. Running tests for features + model logic :  `php artisan test`
-     
+
+## Live Demo Link
+🔗 [Click here to view the live demo](https://learner-progress.up.railway.app/learner-progress)
