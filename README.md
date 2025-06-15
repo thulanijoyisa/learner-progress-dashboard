@@ -1,5 +1,7 @@
 # Learner Progress Dashboard - Coding Challenge
 
+[![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-VIEW-blue?style=for-the-badge&logo=laravel)](https://learner-progress-production.up.railway.app/learner-progress)
+
 ## Features
 - View learners with enrolled courses and % progress
 - Filter learners by course name
