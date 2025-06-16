@@ -9,3 +9,10 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+.toggle-btn .toggle-icon {
+        transition: transform 0.3s ease;
+    }
+    .toggle-btn[aria-expanded="true"] .toggle-icon {
+        transform: rotate(180deg);
+    }

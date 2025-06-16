@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container my-5">
-    <h1 class="mb-4">📊 Learner Progress Dashboard</h1>
+    <h1 class="mb-4">Learner Progress Dashboard</h1>
 
     {{-- Filter/Search/Sort Form --}}
     <form method="GET" action="{{ route('learner-progress.index') }}" class="row g-2 align-items-end mb-4">
@@ -42,8 +42,8 @@
     @if($search || $courseFilter)
         <div class="alert alert-info">
             <strong>Active Filters:</strong>
-            @if($search) 🔍 Name contains: <strong>{{ $search }}</strong> @endif
-            @if($courseFilter) 📚 Course: <strong>{{ $courseFilter }}</strong> @endif
+            @if($search) Name contains: <strong>{{ $search }}</strong> @endif
+            @if($courseFilter) Course: <strong>{{ $courseFilter }}</strong> @endif
         </div>
     @endif
 
@@ -60,4 +60,21 @@
         {{ $learners->links() }}
 
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.collapse').forEach(function (el) {
+            el.addEventListener('show.bs.collapse', function () {
+                const id = el.getAttribute('id');
+                document.getElementById('icon-' + id).classList.remove('bi-chevron-down');
+                document.getElementById('icon-' + id).classList.add('bi-chevron-up');
+            });
+
+            el.addEventListener('hide.bs.collapse', function () {
+                const id = el.getAttribute('id');
+                document.getElementById('icon-' + id).classList.remove('bi-chevron-up');
+                document.getElementById('icon-' + id).classList.add('bi-chevron-down');
+            });
+        });
+    });
+</script>
 @endsection
