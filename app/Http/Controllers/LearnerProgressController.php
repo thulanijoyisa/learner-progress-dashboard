@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Learner;
 use App\Models\Course;
+use Illuminate\Support\Facades\DB;
 
 class LearnerProgressController extends Controller
 {
@@ -25,7 +26,13 @@ class LearnerProgressController extends Controller
                 $q->where('firstname', 'like', "%{$search}%")
                   ->orWhere('lastname', 'like', "%{$search}%");
             });
-        });
+        })
+        ->withCount([
+            'enrolments as progress_percentage' => function ($q) {
+                $q->select(DB::raw('coalesce(avg(progress), 0)'));
+            }
+        ])
+        ->orderBy('progress_percentage', $sortOrder);
        
     $learners = $query->paginate(10)->appends(request()->query());
     $courses = Course::orderBy('name')->pluck('name');
